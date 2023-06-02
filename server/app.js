@@ -6,6 +6,7 @@ const helmet = require('helmet');
 const xss = require('xss-clean');
 const connectDB = require('./db/mongoDb');
 const authRouter = require('./routes/auth');
+const messageRouter = require('./routes/coversation')
 
 const notFound = require('./middlewares/not_found');
 
@@ -26,7 +27,11 @@ io = socketio(server);
 app.get('/',(req,res)=>{
     return res.send("Welcome To Messenger Clone");
 })
+
+
 app.use('/api/v1/auth',authRouter);
+app.use('/api/v1/message',messageRouter);
+
 app.use(notFound);
 
 
