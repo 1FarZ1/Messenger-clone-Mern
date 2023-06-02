@@ -26,7 +26,7 @@ io = socketio(server);
 app.get('/',(req,res)=>{
     return res.send("Welcome To Messenger Clone");
 })
-app.use('/api/vi/auth',authRouter);
+app.use('/api/v1/auth',authRouter);
 app.use(notFound);
 
 
