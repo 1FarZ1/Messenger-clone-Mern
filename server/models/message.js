@@ -6,17 +6,17 @@ const MessageSchema = new mongoose.Schema(
         conversationId: {
             type: mongoose.Types.ObjectId,
             ref:"Conversation",  
-            required:true   
-           },
+            required: [true, "Please provide conversation id"]
+          },
         sender: {
           type: mongoose.Types.ObjectId,
           ref:"User",
-          required:true   
+          required: [true, "Please provide user id"]
         },
         text: {
           type: String,
           max:50,
-          required: true,
+          required: [true, "Please provide the message"]
         },
       },
       { timestamps: true }
