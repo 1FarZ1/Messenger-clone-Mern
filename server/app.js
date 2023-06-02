@@ -5,6 +5,7 @@ const cors = require('cors');
 const helmet = require('helmet');
 const xss = require('xss-clean');
 const connectDB = require('./db/mongoDb');
+const authRouter = require('./routes/auth');
 
 const notFound = require('./middlewares/not_found');
 
@@ -25,8 +26,7 @@ io = socketio(server);
 app.get('/',(req,res)=>{
     return res.send("Welcome To Messenger Clone");
 })
-
-
+app.use('/api/vi/auth',authRouter);
 app.use(notFound);
 
 
@@ -35,14 +35,17 @@ app.use(notFound);
 const port = process.env.PORT || 5000;
 
 let main =  async ()=>{
+   try {
     let result = await connectDB(process.env.MONGO_URI);
-    if(result){
-        console.log("Connected to DB " + result.connections[0].name);
-        server.listen(port,()=>{
-            console.log(`Server is listening in http://127.0.0.1:`+ port);
-        }     
-    );
-    }
+    console.log("Connected to DB " + result.connections[0].name);
+    server.listen(port,()=>{
+        console.log(`Server is listening in http://127.0.0.1:`+ port);
+   }     
+);
+   } catch (error) {
+    console.log(error);  
+   }
+    
 }
 
 main();
