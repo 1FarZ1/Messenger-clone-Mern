@@ -12,15 +12,14 @@ const getMessages = async (req, res) => {
         }).sort({ createdAt: -1 }).select("-conversationId");
 
         let userId = req.user.userId;
-        let result = []
+        let result = [];
         messages.forEach((elm) => {
             let user = User.findById(elm.sender).select("username profilePicture");
-
             result.push({
                 user, msg: elm.text, time: elm.createdAt, fromYou: user._id == userId
             });
         });
-        
+
         return res.status(200).json({
             result,
         })
@@ -34,6 +33,29 @@ const getMessages = async (req, res) => {
 
 
 const addMessage = async (req, res) => {
+    const { convId } = req.params;
+    const { text } = req.body;
+    try {
+        const conversation = await Conversation.findById(convId);
+        if (!conversation) return res.status(400).json({ msg: "wrong conversation id" });
+
+        const message = await Message.create({
+            conversationId: convId,
+            sender: req.user.userId,
+            text
+        });
+
+        return res.status(200).json({
+            msg: "message sent successfully",
+            message
+        });
+
+    }
+    catch (error) {
+        return res.status(500).json({
+            msg: error.message
+        });
+    }
 }
 
 module.exports = {

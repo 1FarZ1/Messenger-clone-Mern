@@ -22,7 +22,7 @@ app.use(cors());
 app.use(xss());
 
 const server = require('http').createServer(app);
-io = socketio(server);
+const io = socketio(server);
 
 
 
