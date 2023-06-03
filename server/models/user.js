@@ -33,11 +33,6 @@ const UserSchema = new mongoose.Schema({
         ref:"User",
         default:[],
     },
-    city:{
-        type:String,
-        required:[true,"please provide  a city"],
-        max:20,
-    },
     profilePicture:{
         type:String,
         default:""

@@ -42,7 +42,7 @@ app.use(notFound);
 
 const port = process.env.PORT || 5000;
 
-let main =  async ()=>{
+let main = async ()=>{
    try {
     let result = await connectDB(process.env.MONGO_URI);
     console.log("Connected to DB " + result.connections[0].name);

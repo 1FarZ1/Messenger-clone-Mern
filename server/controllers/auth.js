@@ -1,6 +1,7 @@
 const { attachCookiesToResponse } = require("../../../Ecommerce-Api-NodeJs/utils/jwt");
 const User = require("../models/user");
 const createTokenUser = require("../utils/createTokenUser");
+const { createJwt } = require("../utils/jwt");
 let register = async (req,res)=>{
     try {
         const {username,email,password} = req.body;
@@ -16,10 +17,13 @@ let register = async (req,res)=>{
 
         const user = await User.create({username,email,password});
         let tkUser = createTokenUser(user);
-        attachCookiesToResponse(res,tkUser);
+        let token = createJwt({payload:tkUser});
+        
+        // attachCookiesToResponse(res,tkUser);
         return res.status(200).json({
             msg:"User Created Successfully",
             user:tkUser,
+            token
         })
     } catch (error) {
         return res.status(500).json({
@@ -35,7 +39,7 @@ let login = async (req,res)=>{
             msg:"please provide all credentials"
         });
     }
-    const user = User.findOne({email});
+    const user = await User.findOne({email});
     if(!user){
         return res.status(400).json({
             msg:"wrong email"
@@ -47,41 +51,61 @@ let login = async (req,res)=>{
         });
     }
     let tkUser = createTokenUser(user);
-    attachCookiesToResponse(res,tkUser);
+
+    let token = createJwt({payload:tkUser});
+    // attachCookiesToResponse(res,tkUser);
     return res.status(200).send({
         msg:"Logged in Succesfully",
-        user:tkUser
+        user:tkUser,
+        token
     })
 
 
 }
 let logout = async (req,res)=>{
-    try {
+    // try {
 
-        if(!res.cookie.tokon){
-            return res.status(400).json({
-                msg:"You already logged out"
-            });
-        }
-        res.cookie('token', 'logging out', {
-            httpOnly: true, // only acceced by the server 
-            expires: new Date(Date.now() + 1000), // expire after 1 seconde
-          });
-        return res.status(200).json({
-            msg:"Logged out successfully"
-        })
-    } catch (error) {
+    //     if(!res.cookie.tokon){
+    //         return res.status(400).json({
+    //             msg:"You already logged out"
+    //         });
+    //     }
+    //     res.cookie('token', 'logging out', {
+    //         httpOnly: true, // only acceced by the server 
+    //         expires: new Date(Date.now() + 1000), // expire after 1 seconde
+    //       });
+    //     return res.status(200).json({
+    //         msg:"Logged out successfully"
+    //     })
+    // } catch (error) {
+    //     return res.status(500).json({
+    //         msg:error.message
+    //     })
+    // }
+    const user =await  User.find({});
+    return res.json({
+        user
+    })
+}
+
+let getCurrentUser = async (req,res)=>{
+    try {
+        const user = await User.findById(req.user.userId)
+        return res.status(200).send({})
+    }
+    catch (error) {
         return res.status(500).json({
             msg:error.message
         })
     }
-
 }
+// let addContactToUser = 
 
 
 module.exports= 
 {
     register,
     login,
-    logout
+    logout,
+    getCurrentUser
 }

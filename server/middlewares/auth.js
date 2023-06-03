@@ -4,8 +4,18 @@ const { isTokenValid } = require("../utils/jwt");
 let authMiddleWare = (req,res,next)=>{
     // check from cookies
     try{
-        const token =  req.cookie.token;
-        if(!token){
+        
+        let token;
+        const authHeader = req.headers.authorization;
+        if (authHeader && authHeader.startsWith('Bearer')) {
+          token = authHeader.split(' ')[1];
+        }
+      
+        // otherwise check if sent in cookies
+        else if (req.cookies.token) {
+          token = req.cookies.token;
+        }
+              if(!token){
             return res.status(403).send("you are not authorized to access this");
         }
 
