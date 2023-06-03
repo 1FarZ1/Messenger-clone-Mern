@@ -1,4 +1,4 @@
-const { isTokenValid } = require("../../../Ecommerce-Api-NodeJs/utils/jwt");
+const { isTokenValid } = require("../utils/jwt");
 
 
 let authMiddleWare = (req,res,next)=>{
@@ -8,13 +8,14 @@ let authMiddleWare = (req,res,next)=>{
         if(!token){
             return res.status(403).send("you are not authorized to access this");
         }
+
        let payload =  isTokenValid(token);
 
         req.user ={
-            username:payload.username,
-            userId:payload.userId
+            username:payload.user.username,
+            userId:payload.user.userId
         }
-        
+
         next();
        
     }

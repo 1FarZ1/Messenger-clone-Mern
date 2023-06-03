@@ -6,9 +6,11 @@ const helmet = require('helmet');
 const xss = require('xss-clean');
 const connectDB = require('./db/mongoDb');
 const authRouter = require('./routes/auth');
-const messageRouter = require('./routes/coversation')
+const conversationRouter = require('./routes/coversation')
+const messageRouter = require('./routes/message')
 
 const notFound = require('./middlewares/not_found');
+const authMiddleWare = require('./middlewares/auth');
 
 
 const app = express();
@@ -30,7 +32,8 @@ app.get('/',(req,res)=>{
 
 
 app.use('/api/v1/auth',authRouter);
-app.use('/api/v1/message',messageRouter);
+app.use('/api/v1/message',authMiddleWare,messageRouter);
+app.use('/api/v1/conversation',authMiddleWare,conversationRouter);
 
 app.use(notFound);
 
