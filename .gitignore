@@ -127,4 +127,4 @@ dist
 .pnp.*
 
 .\server\node_modules
-
+.\server\.env
