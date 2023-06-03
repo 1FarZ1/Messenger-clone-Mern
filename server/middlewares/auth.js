@@ -21,9 +21,10 @@ let authMiddleWare = (req,res,next)=>{
 
        let payload =  isTokenValid(token);
 
+
         req.user ={
-            username:payload.user.username,
-            userId:payload.user.userId
+            username:payload.name,
+            userId:payload.userId
         }
 
         next();
