@@ -7,6 +7,7 @@ const User = require("../models/user");
 const getMessages = async (req, res) => {
     try {
         const { convId } = req.params;
+        if (!convId) return res.status(400).json({ msg: "conversation id is required" });
         const messages = await Message.find({
             conversationId: convId
         }).sort({ createdAt: -1 }).select("-conversationId");
@@ -35,6 +36,7 @@ const getMessages = async (req, res) => {
 const addMessage = async (req, res) => {
     const { convId } = req.params;
     const { text } = req.body;
+    if(!convId) return res.status(400).json({ msg: "conversation id is required" });
     try {
         const conversation = await Conversation.findById(convId);
         if (!conversation) return res.status(400).json({ msg: "wrong conversation id" });
