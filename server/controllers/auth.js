@@ -57,6 +57,12 @@ let login = async (req,res)=>{
 }
 let logout = async (req,res)=>{
     try {
+
+        if(!res.cookie.tokon){
+            return res.status(400).json({
+                msg:"You already logged out"
+            });
+        }
         res.cookie('token', 'logging out', {
             httpOnly: true, // only acceced by the server 
             expires: new Date(Date.now() + 1000), // expire after 1 seconde

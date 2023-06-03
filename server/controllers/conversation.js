@@ -1,9 +1,9 @@
-const Conversation = require('../models/Conversation');
+const Conversation = require('../models/coversation');
 
 
 
 const createNewConversation = async (req,res)=>{
-    
+
 }
 
 
