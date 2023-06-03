@@ -27,16 +27,11 @@ const UserSchema = new mongoose.Schema({
         type:String,
         required:[true,"please provide an password"],
         min:8,
-
-
     },
-    
     Contacts:{
         type:[mongoose.Types.ObjectId],
         ref:"User",
         default:[],
-
-
     },
     city:{
         type:String,
@@ -52,13 +47,6 @@ const UserSchema = new mongoose.Schema({
         default:"no desc",
         max:50,
     },
-    isAdmin:{
-        type:Boolean,
-        default:false,
-
-    },
-
-
 },{
     timestamps:true
 });

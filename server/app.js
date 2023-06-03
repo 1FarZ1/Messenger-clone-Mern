@@ -32,8 +32,8 @@ app.get('/',(req,res)=>{
 
 
 app.use('/api/v1/auth',authRouter);
-app.use('/api/v1/message',authMiddleWare,messageRouter);
-app.use('/api/v1/conversation',authMiddleWare,conversationRouter);
+app.use('/api/v1/messages',authMiddleWare,messageRouter);
+app.use('/api/v1/conversations',authMiddleWare,conversationRouter);
 
 app.use(notFound);
 
