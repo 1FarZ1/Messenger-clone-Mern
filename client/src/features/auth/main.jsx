@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import MessengerLogo from '../../common/messenger_logo.jsx'
+import axios from 'axios';
 import './auth.css';
 
 
@@ -12,22 +13,58 @@ const AuthPage = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [haveAccount, sethaveAccount] = useState(false);
 
-   
-    const signIn = (email,password) => {
-        // add the class to the loading 
-        
-        console.log("logging in as  " + email + " with password " + password)
-    }
-    const signUp = (username,email,password) => {
-        console.log("registering in as  username : "+ username + "with email :" + email + " with password " + password)
 
-    }
-    const changeMode = ()=>{
+    const resetCredentials = ()=>{
         email && setEmail('');
         password && setPassword('');
         username && setUsername('');
+    }
+   
+    const signIn = async (email,password) => {
+        console.log("logging in as  " + email + " with password " + password)
+        try {
+         setIsLoading(true); 
+        const data  = await axios.post("http://127.0.0.1:5500/api/v1/auth/login",{
+            "email":email,
+            "password":password
+        });
+        setIsLoading(false);
+        resetCredentials();
+
+        console.log(data);
+        } catch (error) {
+                console.log(error.message)
+        }
+
+          
+    }
+    const signUp = async (username,email,password) => {
+        
+        console.log("registering in as  username : "+ username + "with email :" + email + " with password " + password);
+        try {
+            setIsLoading(true); 
+           const data  = await axios.post("http://127.0.0.1:5500/api/v1/auth/register",{
+                "username":username,
+               "email":email,
+               "password":password,
+           });
+           setIsLoading(false);
+           resetCredentials();
+           console.log(data);
+           } catch (error) {
+                   console.log(error.message)
+           }
+   
+       
+
+    }
+    const changeMode = ()=>{
+        resetCredentials();
+
         sethaveAccount(!haveAccount);
     }
+
+
 
     return (
         <div>
