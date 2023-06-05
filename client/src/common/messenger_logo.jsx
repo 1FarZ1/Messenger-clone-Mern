@@ -1,9 +1,7 @@
-import svg from '../assets/react.svg'
-
 
 const MessengerLogo = () => (
     <>
-        <img src={svg} alt="React Logo" className="logo" />
+        <img src="https://static.xx.fbcdn.net/rsrc.php/yd/r/hlvibnBVrEb.svg" alt="React Logo" className="logo" />
     </>
 );
 
