@@ -1,10 +1,15 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import './css/index.css'
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import AuthPage from './features/auth/main'
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <AuthPage/>
-  </React.StrictMode>,
-)
+
+const App = () => {
+    return (
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<AuthPage />} />
+            </Routes>
+        </BrowserRouter>
+    )
+}
+
+export default App

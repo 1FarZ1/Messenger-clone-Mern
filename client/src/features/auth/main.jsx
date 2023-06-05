@@ -51,7 +51,12 @@ const AuthPage = () => {
            setIsLoading(false);
            resetCredentials();
            console.log(data);
+           if(data.status == 200){
+               console.log("registered successfully")
+           }
+
            } catch (error) {
+            console.log("failed")
                    console.log(error.message)
            }
    
@@ -60,7 +65,6 @@ const AuthPage = () => {
     }
     const changeMode = ()=>{
         resetCredentials();
-
         sethaveAccount(!haveAccount);
     }
 
