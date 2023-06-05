@@ -4,7 +4,9 @@ const socketio = require('socket.io');
 const cors = require('cors');
 const helmet = require('helmet');
 const xss = require('xss-clean');
+const cookieParser = require('cookie-parser')
 const connectDB = require('./db/mongoDb');
+
 const authRouter = require('./routes/auth');
 const conversationRouter = require('./routes/coversation')
 const messageRouter = require('./routes/message')
@@ -17,6 +19,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
+app.use(cookieParser("secret"))
 app.use(helmet());
 app.use(cors());
 app.use(xss());

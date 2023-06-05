@@ -1,11 +1,19 @@
 /* eslint-disable react/prop-types */
 
-const ChatPage =(props)=>{
-    const {username} = props;
+import { useLocation } from "react-router-dom";
+
+const ChatPage =()=>{
+    const location = useLocation();
+    console.log(location.state.username);
     return(
         <div>
             <h1>Chat Page</h1>
-            <p>Welcome {username}</p>
+            <p>Welcome {location.state.username}</p>
+            <button onClick={()=>{
+                
+            }}>
+                Logout
+            </button>
         </div>
     )
 }

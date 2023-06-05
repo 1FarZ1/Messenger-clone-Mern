@@ -1,7 +1,6 @@
-const { attachCookiesToResponse } = require("../../../Ecommerce-Api-NodeJs/utils/jwt");
+const { attachCookiesToResponse } = require("../utils/jwt");
 const User = require("../models/user");
 const createTokenUser = require("../utils/createTokenUser");
-const { createJwt } = require("../utils/jwt");
 let register = async (req,res)=>{
     try {
         const {username,email,password} = req.body;
@@ -17,14 +16,11 @@ let register = async (req,res)=>{
 
         const user = await User.create({username,email,password});
         let tkUser = createTokenUser(user);
-        let token = createJwt({payload:tkUser});
         
-        // attachCookiesToResponse(res,tkUser);
+        attachCookiesToResponse({res,user:tkUser});
         return res.status(200).json({
             msg:"User Created Successfully",
-            user:tkUser,
-            token
-        })
+            user:tkUser        })
     } catch (error) {
         return res.status(500).json({
                 msg:error.message
@@ -51,14 +47,13 @@ let login = async (req,res)=>{
         });
     }
     let tkUser = createTokenUser(user);
+    attachCookiesToResponse({res,user:tkUser});
 
-    let token = createJwt({payload:tkUser});
-    // attachCookiesToResponse(res,tkUser);
+    console.log("it went smothly");
     return res.status(200).send({
         msg:"Logged in Succesfully",
-        user:tkUser,
-        token
-    })
+        user:tkUser
+        })
 
 
 }

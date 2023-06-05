@@ -2,6 +2,9 @@
 
 import React, { useState } from 'react';
 import MessengerLogo from '../../common/messenger_logo.jsx'
+// a new hook to use  , help with navigation
+import { useNavigate  } from "react-router-dom";
+
 import axios from 'axios';
 import './auth.css';
 
@@ -11,7 +14,8 @@ const AuthPage = () => {
     const [password, setPassword] = useState('');
     const [username, setUsername] = useState('');
     const [isLoading, setIsLoading] = useState(false);
-    const [haveAccount, sethaveAccount] = useState(false);
+    const [haveAccount, sethaveAccount] = useState(true);
+    const navigate = useNavigate();
 
 
     const resetCredentials = ()=>{
@@ -24,14 +28,19 @@ const AuthPage = () => {
         console.log("logging in as  " + email + " with password " + password)
         try {
          setIsLoading(true); 
-        const data  = await axios.post("http://127.0.0.1:5500/api/v1/auth/login",{
+        const res  = await axios.post("http://127.0.0.1:5500/api/v1/auth/login",{
             "email":email,
             "password":password
         });
         setIsLoading(false);
+        console.log(res);
         resetCredentials();
+        if(res.status == 200){
+            setTimeout(()=>{
+                navigate("/chat",{state:{username:res.data.user.name}});
+            },2000);
+        }
 
-        console.log(data);
         } catch (error) {
                 console.log(error.message)
         }
@@ -43,15 +52,15 @@ const AuthPage = () => {
         console.log("registering in as  username : "+ username + "with email :" + email + " with password " + password);
         try {
             setIsLoading(true); 
-           const data  = await axios.post("http://127.0.0.1:5500/api/v1/auth/register",{
+           const res  = await axios.post("http://127.0.0.1:5500/api/v1/auth/register",{
                 "username":username,
                "email":email,
                "password":password,
            });
            setIsLoading(false);
            resetCredentials();
-           console.log(data);
-           if(data.status == 200){
+           console.log(res.data);
+           if(res.status == 200){
                console.log("registered successfully")
            }
 
