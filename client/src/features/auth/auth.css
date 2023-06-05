@@ -71,6 +71,7 @@ body {
     background-color:var(--blue-color);
     color: #fff;
     cursor: pointer;
+    align-self: center;
 }
 
 .container button:hover {
@@ -112,4 +113,36 @@ body {
     font-weight: bold;
     text-align: center;
     margin-top: 20px;
+}
+
+.container .loading_activate {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container .loading {
+    display: none;
+}
+.container .loading_circle{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid #777;
+    border-top-color: #0A7CFF;
+    animation: loading 4s infinite linear;
+}
+
+@keyframes loading {
+    from{
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+.logo{
+    margin-bottom: 20px;
 }
