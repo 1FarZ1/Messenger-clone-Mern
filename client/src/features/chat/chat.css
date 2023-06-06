@@ -46,14 +46,66 @@ body{
 .chat__section .chat__input{
     display: flex;
     height: 10vh;
+    align-items: center;
 
 }
 .chat__section .chat__input button{
    
     width: 100%;
-    flex-basis: 20%;
+    flex-basis: 10%;
     font-size: 1.4rem;
 
+}
+.chat__section .chat__input input{
+   
+    width: 100%;
+    flex-basis: 90%;
+    font-size: 1.4rem;
+    height: 8vh;
+    text-align:justify;
+    padding: 5px;
+
+}
+
+.chat__section .message__Section {
+    height: calc(80vh - 20px);
+    padding-bottom: 10px;
+    padding-top: 10px;
+    display: flex;
+    column-gap: 20px;
+    flex-direction: column;
+    column-gap: 110px ;
+    overflow-y: scroll;
+
+}
+
+.chat__section .message__Section .messageFromMe{
+    display: flex;
+    margin: 10px;
+    gap: 10px;
+    align-self: flex-end;
+    flex-direction: row-reverse;
+}
+.chat__section .message__Section .message{
+    display: flex;
+    margin: 10px;
+    gap: 10px;
+    align-self: flex-start;
+    flex-direction: row;
+}
+.chat__section .message__Section img{
+   width: 40px;
+}
+
+
+.chat__section .message__Section .message__content{
+    padding: 10px;
+    padding-left: 0;
+    background-color: #2D3748;
+    border-radius: 10px;
+}
+.chat__section .message__Section .message__content p{
+    color:white
 }
 
 
@@ -122,6 +174,9 @@ body{
     width: 90%;
 
 }
+
+
+
 img {
     width: 60px;
     border-radius: 50%;
