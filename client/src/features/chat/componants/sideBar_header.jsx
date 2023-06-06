@@ -1,7 +1,7 @@
 import MessengerLogo from "../../../common/messenger_logo";
 
 
-const Header =  ()=>{
+const SideBarHeader =  ()=>{
     return (
         <div className="header__container">
             <div className="top">
@@ -13,10 +13,9 @@ const Header =  ()=>{
             <input
                 type="text"
                 placeholder="Search here" />
-
                 </div>
 
     )
 }
 
-export default Header;
+export default SideBarHeader;

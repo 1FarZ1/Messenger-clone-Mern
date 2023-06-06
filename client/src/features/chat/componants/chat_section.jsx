@@ -1,4 +1,5 @@
 import ChatHeader from "./chat_header";
+import ChatInput from "./chat_input";
 
 
 
@@ -10,11 +11,9 @@ const  ChatSection = () => {
             <div className="messageSection">
                 <h1>hey</h1>
             </div>
-            <div className="sendMessageSection">
-                <input type="text" />
-                <button>send</button>
 
-            </div>
+            <ChatInput/>
+            
         </div>
     );
 }

@@ -1,7 +1,7 @@
 
 
 
-const Footer = () => {
+const SideBarFooter = () => {
     return (
         <div className="footer">
             
@@ -20,4 +20,4 @@ const Footer = () => {
     );
 }
 
-export default Footer;
+export default SideBarFooter;
