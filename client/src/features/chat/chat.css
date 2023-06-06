@@ -1,23 +1,36 @@
 
+
+.chat__container{
+    display: flex;
+    align-items: flex-start;
+    height: 100vh;
+}
+
+
 .header__container{
+    width: 400px;
+    top: 0;
+    position: sticky;
+    z-index: 100;
+    background: rgb(26,32,44);
+
+
+
+}
+.top{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 400px;
     padding: 10px;
     padding-top: 0px;
-    position: sticky;
-    background: rgb(26,32,44);
-    top: 0;
-    z-index: 100;
 }
 
-.header__container img{
+.top img{
     width: 50px;
     margin-top: 10px;
 }
 
-.header__container h2{
+.top h2{
     font-size: 18px;
     font-weight: 500;
     color: white;
@@ -36,8 +49,7 @@
     flex: 1;
     margin-left: 20px;
 }
-
-.contact img{
+ img{
     width: 60px;
     height: 60px;
     border-radius: 50%;
@@ -73,10 +85,12 @@
 input {
     border: none;
     outline: none;
-    padding: 10px;
-    border-radius: 10px;
+    padding: 15px;
+    border-radius: 15px;
     margin-right: 10px;
+    margin-left: 10px;
     width: 100%;
+    align-self: center;
     background-color: #2D3748;
     color: white;
     font-size: 16px;
@@ -87,3 +101,85 @@ input {
 .contact__details span{
     margin-right: 10px;
 } */
+
+/* The Chat Part  */
+.chat{
+    border-left: 1px solid lightgray;
+
+}
+.chat__header{
+    display: flex;
+    position: sticky;
+    top: 0;
+    z-index: 101;
+    width: 1050px;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 2px solid #2D3748;
+    box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.75);
+    background-color: rgb(26,32,44);
+}
+
+.chat__header__left{
+    flex: 0.8;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    
+}
+
+.chat__header__right{
+    flex: 0.2;
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+
+
+.test{
+    overflow-y: scroll;
+}
+
+.chat__section{
+    display: flex;
+    position: sticky;
+    
+    bottom:0;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+}
+
+input {
+    border: none;
+    outline: none;
+    padding: 15px;
+    border-radius: 15px;
+    margin-right: 10px;
+    margin-left: 10px;
+    width: 100%;
+    align-self: center;
+    background-color: #2D3748;
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.sendMessageSection {
+       display:flex;
+       width: 100%;
+
+    
+}
+.sendMessageSection input{
+    flex-grow:5;
+}
+.sendMessageSection button{
+    flex-grow:1;
+
+}

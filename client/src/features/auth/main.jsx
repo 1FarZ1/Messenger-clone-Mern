@@ -110,7 +110,6 @@ const AuthPage = () => {
                </>
                
                 <a onClick={changeMode}>{haveAccount ? 'Need to create an account?' : 'Already have an account?'}</a>
-                make a invisible loading 
 
                 <div className={isLoading ? "loading_activate":"loading" }>
                     <div className='loading_circle'></div>

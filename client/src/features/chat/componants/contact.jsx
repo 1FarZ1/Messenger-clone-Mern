@@ -4,8 +4,11 @@
 
 import '../chat.css'
 const Contact = ({username,msg,profilePic,time}) => { 
+    const handleClick = () => {
+        console.log(username);
+    }
     return (
-        <div className="contact">
+        <div className="contact" onClick={handleClick}>
             <img src={profilePic} alt="profile pic"/>
             <div className="contact__details">
                 <h3>{username}</h3>
