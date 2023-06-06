@@ -9,7 +9,7 @@ const Contact = ({username,msg,profilePic,time}) => {
             <img src={profilePic} alt="profile pic"/>
             <div className="contact__details">
                 <h3>{username}</h3>
-                <p>{msg} <span>{time}</span></p>
+                <p>{msg}  <span>{time}</span></p>
             </div>
         </div>
     )
