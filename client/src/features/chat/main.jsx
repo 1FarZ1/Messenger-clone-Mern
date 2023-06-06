@@ -1,19 +1,18 @@
 /* eslint-disable react/prop-types */
 
-import { useLocation } from "react-router-dom";
+import Contact from "./componants/contact";
+
+// import { useLocation } from "react-router-dom";
 
 const ChatPage =()=>{
-    const location = useLocation();
-    console.log(location.state.username);
+    // const location = useLocation();
+
     return(
         <div>
             <h1>Chat Page</h1>
-            <p>Welcome {location.state.username}</p>
-            <button onClick={()=>{
-                
-            }}>
-                Logout
-            </button>
+
+            <Contact username={"fares"} profilePic={"https://avatars.githubusercontent.com/u/91225280?v=4"} msg={"hey whats up man"}/>
+      
         </div>
     )
 }

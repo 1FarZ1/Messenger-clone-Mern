@@ -1,0 +1,20 @@
+
+
+.contact{
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    cursor: pointer;
+    border-bottom: 1px solid #f6f6f6;
+}
+
+.contact__details{
+    flex: 1;
+    margin-left: 20px;
+}
+
+.contact img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
