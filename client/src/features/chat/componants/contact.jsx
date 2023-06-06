@@ -3,13 +3,13 @@
 
 
 import '../chat.css'
-const Contact = ({username,msg,profilePic}) => { 
+const Contact = ({username,msg,profilePic,time}) => { 
     return (
         <div className="contact">
             <img src={profilePic} alt="profile pic"/>
             <div className="contact__details">
-                <h2>{username}</h2>
-                <p>{msg}</p>
+                <h3>{username}</h3>
+                <p>{msg} <span>{time}</span></p>
             </div>
         </div>
     )
