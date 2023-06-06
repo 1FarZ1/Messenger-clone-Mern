@@ -2,7 +2,7 @@
 
 const ChatInput = () => {
     return (
-        <div className="sendMessageSection">
+        <div className="chat__input">
                 <input type="text"  placeholder="type a message"/>
                 <button>send</button>
 

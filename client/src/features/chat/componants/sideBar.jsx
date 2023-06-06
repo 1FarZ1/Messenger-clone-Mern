@@ -7,7 +7,7 @@ import SideBarFooter from "./sideBar_Footer.jsx";
 
 const SideBar = () => {
     return (
-        <div>
+        <div className="side__bar">
             <SideBarHeader />
 
             <div className="test">

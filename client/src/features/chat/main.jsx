@@ -9,9 +9,7 @@ const ChatPage = () => {
     return (
         <div className="chat__container">
         <SideBar/>
-        <div className="chat__place">
-            <ChatSection/>
-        </div>
+        <ChatSection/>
       
         </div>
     )

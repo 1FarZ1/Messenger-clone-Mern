@@ -1,7 +1,142 @@
+
+
+
+body{
+    padding:0;
+    margin:0;
+}
+
 .chat__container{
-    width: 100vh;
-    height: 100vh;
+    min-width: 100vh;
+    min-height: 100vh;
     display: flex;
+    gap: 20px;
     align-items: flex-start;
     justify-content: flex-start;
 }
+
+.chat__section{
+    display: flex;
+    height: 100vh;
+    margin: 10px;
+    margin-top: 0;
+    margin-bottom: 0;
+    flex-basis : 70%;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.chat__section .chat__header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height:10vh;
+
+
+}
+.chat__section .chat__header .chat__header__left{
+    display: flex;
+    align-items: center;
+}
+
+
+.chat__section .chat__header .chat__header__left img{
+    margin-right: 10px;
+}
+
+.chat__section .chat__input{
+    display: flex;
+    height: 10vh;
+
+}
+.chat__section .chat__input button{
+   
+    width: 100%;
+    flex-basis: 20%;
+    font-size: 1.4rem;
+
+}
+
+
+.side__bar{
+    display: flex;
+    flex-direction: column;
+    flex-basis : 30%;
+    position: sticky;
+    top: 0;    
+
+}
+
+
+/* hada howa container t3 messages*/
+
+.test{
+    height: 70vh;
+    overflow-y: scroll;
+}
+
+.side__bar .header__container .top{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    height: calc(15vh - 20px) ;
+}
+
+.side__bar .header__container .top img{
+    margin-top: 20px;
+    width: 10%;
+    height: 50%;
+}
+
+
+
+.side__bar .contact{
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    cursor: pointer;
+}
+
+.side__bar .contact_selected{
+    background-color: rgb(26,32,44);
+}
+.side__bar .contact .contact__details{
+    flex: 1;
+    margin-left: 20px;
+}
+.side__bar .contact .contact__details p {
+        margin: 5px;
+        font-size: 14px;
+        color:grey;
+        font-weight: 400;
+}
+.side__bar .footer{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 15vh;
+    position: sticky;
+    background-color:rgb(26,32,44) ;
+    bottom: 0;
+    width: 90%;
+
+}
+img {
+    width: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+
+}
+
+input{
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    width: 100%;
+    background-color:grey;
+    font-size: 1.2rem;
+    flex-basis:100%;
+}
+
+
