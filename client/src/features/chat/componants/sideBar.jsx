@@ -6,23 +6,26 @@ import SideBarFooter from "./sideBar_Footer.jsx";
 
 
 const SideBar = () => {
+
+    const contacts=[
+
+    ];
     return (
         <div className="side__bar">
             <SideBarHeader />
 
             <div className="test">
-                <Contact username={"fares"} profilePic={"https://avatars.githubusercontent.com/u/91225280?v=4"} msg={"hey whats up man"} time={"1h"} />
-                <Contact username={"fares"} profilePic={"https://avatars.githubusercontent.com/u/91225280?v=4"} msg={"hey whats up man"} time={"1h"} />
-                <Contact username={"fares"} profilePic={"https://avatars.githubusercontent.com/u/91225280?v=4"} msg={"hey whats up man"} time={"1h"} />
-                <Contact username={"fares"} profilePic={"https://avatars.githubusercontent.com/u/91225280?v=4"} msg={"hey whats up man"} time={"1h"} />
-                <Contact username={"fares"} profilePic={"https://avatars.githubusercontent.com/u/91225280?v=4"} msg={"hey whats up man"} time={"1h"} />
-                <Contact username={"fares"} profilePic={"https://avatars.githubusercontent.com/u/91225280?v=4"} msg={"hey whats up man"} time={"1h"} />
-                <Contact username={"fares"} profilePic={"https://avatars.githubusercontent.com/u/91225280?v=4"} msg={"hey whats up man"} time={"1h"} />
-                <Contact username={"fares"} profilePic={"https://avatars.githubusercontent.com/u/91225280?v=4"} msg={"hey whats up man"} time={"1h"} />
-                <Contact username={"fares"} profilePic={"https://avatars.githubusercontent.com/u/91225280?v=4"} msg={"hey whats up man"} time={"1h"} />
-                <Contact username={"fares"} profilePic={"https://avatars.githubusercontent.com/u/91225280?v=4"} msg={"hey whats up man"} time={"1h"} />
-                <Contact username={"fares"} profilePic={"https://avatars.githubusercontent.com/u/91225280?v=4"} msg={"hey whats up man"} time={"1h"} />
-                <Contact username={"fares"} profilePic={"https://avatars.githubusercontent.com/u/91225280?v=4"} msg={"hey whats up man"} time={"1h"} />
+            {
+
+                contacts.length == 0 ? 
+                <div className="no__contacts">
+                    <p>no Contacts</p>
+                    </div>
+                :
+                contacts.map((e)=>{
+                    return <Contact username={e.usernmae} msg={e.msg} profilePic={e.profilePic} time={e.time}  key={contacts.indexOf(e)}/>
+                })
+            }
             </div>
 
 

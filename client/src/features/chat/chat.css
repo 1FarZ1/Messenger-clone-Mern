@@ -4,6 +4,7 @@
 body{
     padding:0;
     margin:0;
+    display: block;
 }
 
 .chat__container{
@@ -82,6 +83,7 @@ body{
 .chat__section .message__Section .messageFromMe{
     display: flex;
     margin: 10px;
+    
     gap: 10px;
     align-self: flex-end;
     flex-direction: row-reverse;
@@ -108,6 +110,18 @@ body{
     color:white
 }
 
+.chat__header__info{
+    margin-right: 10px;
+
+}
+
+
+.no_contact{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ 
+}
 
 .side__bar{
     display: flex;

@@ -1,4 +1,7 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import MessengerLogo from "../../../common/messenger_logo";
+import { faAdd } from '@fortawesome/free-solid-svg-icons'
+
 
 
 const SideBarHeader =  ()=>{
@@ -7,8 +10,7 @@ const SideBarHeader =  ()=>{
             <div className="top">
             <MessengerLogo/>
              <h2>Chat</h2>
-             
-            <h3>t</h3>
+            <FontAwesomeIcon icon={faAdd}/>
             </div>
             <input
                 type="text"

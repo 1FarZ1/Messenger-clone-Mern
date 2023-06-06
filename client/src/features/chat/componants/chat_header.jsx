@@ -1,4 +1,5 @@
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faInfoCircle } from '@fortawesome/free-solid-svg-icons'
 
 const ChatHeader = () => {
     return (
@@ -9,7 +10,7 @@ const ChatHeader = () => {
             </div>
             <div className="chat__header__right">
                 <div className="chat__header__info">
-                    iconOfInfo
+                    <FontAwesomeIcon icon={faInfoCircle}/>
                 </div>
             </div>
         </div>

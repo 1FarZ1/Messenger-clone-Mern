@@ -10,10 +10,10 @@ const SideBarFooter = () => {
             </div>
 
             <div className="logout">
-                <h3>Logout</h3>
+                <button>Logout</button>
             </div>
             <div className="settings">
-                <h3>Settings</h3>
+                <button>Settings</button>
             </div>
             
             </div>
