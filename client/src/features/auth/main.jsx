@@ -30,6 +30,9 @@ const AuthPage = () => {
         const res  = await axios.post("http://127.0.0.1:5500/api/v1/auth/login",{
             "email":email,
             "password":password
+        },{
+            "withCredentials":true
+
         });
         setIsLoading(false);
         console.log(res);
@@ -57,6 +60,10 @@ const AuthPage = () => {
                 "username":username,
                "email":email,
                "password":password,
+               
+           },
+           {
+                            "withCredentials":true
            });
            setIsLoading(false);
            resetCredentials();
@@ -83,7 +90,7 @@ const AuthPage = () => {
 
 
     return (
-        <div>
+        <div className='big__container'>
             <div className='container'>
                <MessengerLogo />
                <>

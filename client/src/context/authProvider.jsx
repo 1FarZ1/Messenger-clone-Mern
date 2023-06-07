@@ -6,7 +6,9 @@ import axios from 'axios';
 
 const getUser  = async ()=>{
         try {
-            const res=  await axios.get("http://127.0.0.1:5500/api/v1/auth/me");
+            const res=  await axios.get("http://127.0.0.1:5500/api/v1/auth/me",{
+                "withCredentials":true
+            });
             if(res.data.auth == false){
                 return null;
             } 

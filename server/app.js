@@ -19,9 +19,23 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
+
+// let allowlist = ['*', 'http://localhost:5173']
+// let corsOptionsDelegate =  (req, callback) => {
+//    let corsOptions;
+//   if (allowlist.indexOf(req.header('Origin')) !== -1) {
+//     corsOptions =  // reflect (enable) the requested origin in the CORS response
+//   } else {
+//     corsOptions = { origin: true } // disable CORS for this request
+//   }
+//   callback(null, corsOptions) // callback expects two parameters: error and options
+// }
+
 app.use(cookieParser("secret"))
 app.use(helmet());
-app.use(cors());
+app.use(cors(
+   { origin: true }
+));
 app.use(xss());
 
 const server = require('http').createServer(app);

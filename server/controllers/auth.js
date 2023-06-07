@@ -18,6 +18,7 @@ let register = async (req,res)=>{
         let tkUser = createTokenUser(user);
         
         attachCookiesToResponse({res,user:tkUser});
+
         return res.status(200).json({
             msg:"User Created Successfully",
             user:tkUser        })
@@ -48,7 +49,7 @@ let login = async (req,res)=>{
     }
     let tkUser = createTokenUser(user);
     attachCookiesToResponse({res,user:tkUser});
-
+    console.log(req.cookies);
     console.log("it went smothly");
     return res.status(200).send({
         msg:"Logged in Succesfully",
