@@ -4,6 +4,8 @@ const { isTokenValid } = require("../utils/jwt");
 let authMiddleWare = (req,res,next)=>{
     // check from cookies
     try{
+
+      console.log(req.cookies);
         
         let token;
         const authHeader = req.headers.authorization;
@@ -15,7 +17,7 @@ let authMiddleWare = (req,res,next)=>{
         else if (req.cookies.token) {
           token = req.cookies.token;
         }
-              if(!token){
+        if(!token){
             return res.status(200).json({
               msg:"the user not authenticared",
               auth:false,
@@ -25,7 +27,7 @@ let authMiddleWare = (req,res,next)=>{
        let payload =  isTokenValid(token);
 
 
-        req.user ={
+        req.user = {
             username:payload.name,
             userId:payload.userId
         }

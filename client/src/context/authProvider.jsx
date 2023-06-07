@@ -7,7 +7,11 @@ import axios from 'axios';
 const getUser  = async ()=>{
         try {
             const res=  await axios.get("http://127.0.0.1:5500/api/v1/auth/me",{
-                "withCredentials":true
+                withCredentials:true,
+                credentials: 'include',
+                headers: {
+                    "Content-Type": "application/json",
+                  },
             });
             if(res.data.auth == false){
                 return null;
@@ -26,9 +30,11 @@ const getUser  = async ()=>{
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     useEffect( () => {
-        const currentUser = getUser()
-        console.log(currentUser);
-     setUser(currentUser)
+    getUser().then((v)=>{
+            setUser(v)
+        }
+            
+        )
  }, []);
     return (
       <AuthContext.Provider value={{ user}}>{children}</AuthContext.Provider>

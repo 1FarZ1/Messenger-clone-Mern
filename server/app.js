@@ -18,20 +18,27 @@ const authMiddleWare = require('./middlewares/auth');
 
 
 // cors options
-const corsOptions = {
-   AccessControlAllowOrigin: '*',
-   origin: 'http://localhost:5173',
-   credentials: true,
-   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE'
- }
+// const corsOptions = {
+//    AccessControlAllowOrigin: '*',
+//    origin: 'http://localhost:5173',
+//    credentials: true,
+//    origin:true,
+//    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE'
+//  }
 const app = express();
-app.use(cors(corsOptions));
+
+
+app.use(cors({ origin: true , credentials: true }));
+
+
+
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
 
-
-app.use(cookieParser())
+app.use(cookieParser(
+   "secret"
+))
 app.use(helmet());
 app.use(xss());
 

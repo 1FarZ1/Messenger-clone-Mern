@@ -30,6 +30,7 @@ let register = async (req,res)=>{
 
 }
 let login = async (req,res)=>{
+  
     const{email,password}  = req.body;
     if( !email || !password){
         return res.status(400).json({
@@ -86,7 +87,7 @@ let logout = async (req,res)=>{
 
 let getCurrentUser = async (req,res)=>{
     try {
-        const user = await User.findById(req.user.userId)
+        const user = await User.findById(req.user.userId).select("-password")
         return res.status(200).json({
             user,
             auth:true,

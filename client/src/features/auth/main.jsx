@@ -31,7 +31,11 @@ const AuthPage = () => {
             "email":email,
             "password":password
         },{
-            "withCredentials":true
+         headers: {
+          "Content-Type": "application/json",
+        },
+        withCredentials:true,
+        credentials: 'include',
 
         });
         setIsLoading(false);
@@ -63,7 +67,13 @@ const AuthPage = () => {
                
            },
            {
-                            "withCredentials":true
+
+                            withCredentials:true,
+                            credentials: 'include',
+
+                            headers: {
+                                "Content-Type": "application/json",
+                              },
            });
            setIsLoading(false);
            resetCredentials();

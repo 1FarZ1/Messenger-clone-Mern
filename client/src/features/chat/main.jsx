@@ -14,7 +14,9 @@ const ChatPage = () => {
     const navigator = useNavigate();
 
     useEffect(()=>{
+        console.log(user);
         if(!user){
+            
             navigator("/login");
             }
     },[])

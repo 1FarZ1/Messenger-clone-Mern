@@ -10,15 +10,23 @@ const createJwt = ({payload})=>{
 
 // this is for setup the cookies for web , with cookies ,
 const attachCookiesToResponse = ({ res, user }) => {
+   try {
     const token = createJwt({ payload: user });
   
     const oneDay = 1000 * 60 * 60 * 24;
+    res.cookie("token",token,{ 
+      httpOnly: true ,
+      secure:true,
+      sameSite:"none",
+      maxAge: 2 * 60 * 60 * 1000
+   });
+  
 
-    res.cookie('token', token, {
-      httpOnly: true,
-      expires: new Date(Date.now() + oneDay),
-      signed: true,
-    });
+    
+   } catch (error) {
+      console.log(error);
+   }
+
 
 
 
