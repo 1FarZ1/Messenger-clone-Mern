@@ -16,7 +16,10 @@ let authMiddleWare = (req,res,next)=>{
           token = req.cookies.token;
         }
               if(!token){
-            return res.status(403).send("you are not authorized to access this");
+            return res.status(200).json({
+              msg:"the user not authenticared",
+              auth:false,
+            });
         }
 
        let payload =  isTokenValid(token);

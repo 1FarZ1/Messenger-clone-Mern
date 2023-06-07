@@ -7,11 +7,11 @@ import axios from 'axios';
 const getUser  = async ()=>{
         try {
             const res=  await axios.get("http://127.0.0.1:5500/api/v1/auth/me");
-            if(res.status ==200){
-                return res.data; 
-            }
-            return null;
-            
+            if(res.data.auth == false){
+                return null;
+            } 
+             return res.data.user;
+           
         } catch (error) {
             console.log(error);    
             return null;
@@ -23,8 +23,9 @@ const getUser  = async ()=>{
 
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
-    useEffect(() => {
+    useEffect( () => {
         const currentUser = getUser()
+        console.log(currentUser);
      setUser(currentUser)
  }, []);
     return (

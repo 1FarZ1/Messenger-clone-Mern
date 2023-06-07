@@ -51,6 +51,8 @@ const  ChatSection = () => {
     
         },
     ];
+
+    
     return (
         <div className="chat__section">
             <ChatHeader/>

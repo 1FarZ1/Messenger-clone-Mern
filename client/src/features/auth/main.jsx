@@ -2,7 +2,6 @@
 
 import React, { useState } from 'react';
 import MessengerLogo from '../../common/messenger_logo.jsx'
-// a new hook to use  , help with navigation
 import { useNavigate  } from "react-router-dom";
 
 import axios from 'axios';
@@ -37,11 +36,13 @@ const AuthPage = () => {
         resetCredentials();
         if(res.status == 200){
             setTimeout(()=>{
-                navigate("/chat",{state:{username:res.data.user.name}});
+                navigate("/",{state:{username:res.data.user.name}});
             },2000);
         }
 
         } catch (error) {
+            setIsLoading(false);
+
                 console.log(error.message)
         }
 
@@ -65,6 +66,8 @@ const AuthPage = () => {
            }
 
            } catch (error) {
+            setIsLoading(false);
+
             console.log("failed")
                    console.log(error.message)
            }

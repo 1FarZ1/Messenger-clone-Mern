@@ -87,7 +87,8 @@ let getCurrentUser = async (req,res)=>{
     try {
         const user = await User.findById(req.user.userId)
         return res.status(200).json({
-            user
+            user,
+            auth:true,
         })
     }
     catch (error) {
@@ -96,6 +97,8 @@ let getCurrentUser = async (req,res)=>{
         })
     }
 }
+
+
 
 
 module.exports= 
