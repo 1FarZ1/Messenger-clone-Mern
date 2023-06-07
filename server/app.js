@@ -15,27 +15,24 @@ const notFound = require('./middlewares/not_found');
 const authMiddleWare = require('./middlewares/auth');
 
 
+
+
+// cors options
+const corsOptions = {
+   AccessControlAllowOrigin: '*',
+   origin: 'http://localhost:5173',
+   credentials: true,
+   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE'
+ }
 const app = express();
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
 
-// let allowlist = ['*', 'http://localhost:5173']
-// let corsOptionsDelegate =  (req, callback) => {
-//    let corsOptions;
-//   if (allowlist.indexOf(req.header('Origin')) !== -1) {
-//     corsOptions =  // reflect (enable) the requested origin in the CORS response
-//   } else {
-//     corsOptions = { origin: true } // disable CORS for this request
-//   }
-//   callback(null, corsOptions) // callback expects two parameters: error and options
-// }
 
-app.use(cookieParser("secret"))
+app.use(cookieParser())
 app.use(helmet());
-app.use(cors(
-   { origin: true }
-));
 app.use(xss());
 
 const server = require('http').createServer(app);
@@ -74,3 +71,17 @@ let main = async ()=>{
 }
 
 main();
+
+
+
+
+// let allowlist = ['*', 'http://localhost:5173']
+// let corsOptionsDelegate =  (req, callback) => {
+//    let corsOptions;
+//   if (allowlist.indexOf(req.header('Origin')) !== -1) {
+//     corsOptions =  // reflect (enable) the requested origin in the CORS response
+//   } else {
+//     corsOptions = { origin: true } // disable CORS for this request
+//   }
+//   callback(null, corsOptions) // callback expects two parameters: error and options
+// }
