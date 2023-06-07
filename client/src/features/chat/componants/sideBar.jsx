@@ -8,6 +8,12 @@ import SideBarFooter from "./sideBar_Footer.jsx";
 const SideBar = () => {
 
     const contacts=[
+        {
+            username:"sahil",
+            msg:"hello",
+            profilePic:"https://avatars.githubusercontent.com/u/91225280?v=4",
+            time:"12:00"
+        }
 
     ];
     return (
@@ -23,7 +29,7 @@ const SideBar = () => {
                     </div>
                 :
                 contacts.map((e)=>{
-                    return <Contact username={e.usernmae} msg={e.msg} profilePic={e.profilePic} time={e.time}  key={contacts.indexOf(e)}/>
+                    return <Contact username={e.username} msg={e.msg} profilePic={e.profilePic} time={e.time}  key={contacts.indexOf(e)}/>
                 })
             }
             </div>

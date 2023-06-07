@@ -10,7 +10,7 @@ const ChatHeader = () => {
             </div>
             <div className="chat__header__right">
                 <div className="chat__header__info">
-                    <FontAwesomeIcon icon={faInfoCircle}/>
+                    <button> <FontAwesomeIcon icon={faInfoCircle}/></button>
                 </div>
             </div>
         </div>

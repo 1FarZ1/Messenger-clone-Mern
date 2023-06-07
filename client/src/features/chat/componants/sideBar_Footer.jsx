@@ -1,7 +1,10 @@
+import { useContext } from "react";
+import AuthContext from "../../../context/authContext";
 
 
 
 const SideBarFooter = () => {
+    const data= useContext(AuthContext)
     return (
         <div className="footer">
             
@@ -10,7 +13,7 @@ const SideBarFooter = () => {
             </div>
 
             <div className="logout">
-                <button>Logout</button>
+                <button>{data.data}</button>
             </div>
             <div className="settings">
                 <button>Settings</button>
