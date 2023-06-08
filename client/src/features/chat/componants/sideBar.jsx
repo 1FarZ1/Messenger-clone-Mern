@@ -4,37 +4,19 @@
 import Contact from "./contact";
 import SideBarHeader from "./sideBar_header";
 import SideBarFooter from "./sideBar_Footer.jsx";
+import { useContext } from "react";
+import AuthContext from "../../../context/authContext";
 
 
 const SideBar = (props) => {
 
+
+    const {contacts} = useContext(AuthContext)
     const {currentContact ,setContact} = props;
 
 
     const changeContact = (val) => setContact(val);
     
-    const contacts=[
-        {
-            username:"sahil",
-            msg:"hello",
-            profilePic:"https://avatars.githubusercontent.com/u/91225280?v=4",
-            time:"12:00",
-        },
-        {
-            username:"fares",
-            msg:"hello",
-            profilePic:"https://avatars.githubusercontent.com/u/91225280?v=4",
-            time:"12:00",
-        }
-        ,
-        {
-            username:"imad",
-            msg:"hello",
-            profilePic:"https://avatars.githubusercontent.com/u/91225280?v=4",
-            time:"12:00",
-        }
-
-    ];
     return (
         <div className="side__bar">
             <SideBarHeader />
