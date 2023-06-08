@@ -1,4 +1,4 @@
-# messenger-clone
+# messenger-clone (still in progress)
 ## A Full Stack and Functionnel Messenger Clone built using Nodejs, Express,MongoDb ,React,Socket io and other npm Packages listed below,  for learning purposes and focusing on the functionality mostly , 
 
 ## Setup
