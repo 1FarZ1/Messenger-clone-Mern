@@ -1,17 +1,17 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import AuthPage from './features/auth/main'
 import ChatPage from "./features/chat/main";
-import { useContext } from "react";
-import AuthContext from "./context/authContext";
+import { PrivateRoute } from "./private/privateRouter";
 
 
 const App = () => {
     // eslint-disable-next-line no-unused-vars
-    const authState= useContext(AuthContext);
     return (
         <BrowserRouter>
-            <Routes>                
-                <Route path="/" element={<ChatPage />} />
+            <Routes>   
+            <Route element={<PrivateRoute />}>
+                        <Route path="/" element={<ChatPage />} />
+              </Route>             
                 <Route path="/login" element={<AuthPage />} />
             </Routes>
         </BrowserRouter>

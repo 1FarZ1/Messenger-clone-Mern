@@ -4,7 +4,7 @@ import { useContext, useEffect } from "react";
 import ChatSection from "./componants/chat_section";
 import SideBar from "./componants/sideBar";
 import AuthContext from "../../context/authContext";
-import { useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 import "./chat.css"
 
 
@@ -12,15 +12,14 @@ const ChatPage = () => {
 
     const {user} =useContext(AuthContext);
     const navigator = useNavigate();
-
     useEffect(()=>{
-        console.log(user);
         if(!user){
-            
+            console.log(user);
             navigator("/login");
-            }
-    },[])
-
+        
+          }
+    },[user])
+  
     return (
         <div className="chat__container">
         <SideBar/>

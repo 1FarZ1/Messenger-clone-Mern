@@ -60,31 +60,38 @@ let login = async (req,res)=>{
 
 }
 let logout = async (req,res)=>{
-    // try {
+    try {
 
-    //     if(!res.cookie.tokon){
-    //         return res.status(400).json({
-    //             msg:"You already logged out"
-    //         });
-    //     }
-    //     res.cookie('token', 'logging out', {
-    //         httpOnly: true, // only acceced by the server 
-    //         expires: new Date(Date.now() + 1000), // expire after 1 seconde
-    //       });
-    //     return res.status(200).json({
-    //         msg:"Logged out successfully"
-    //     })
-    // } catch (error) {
-    //     return res.status(500).json({
-    //         msg:error.message
-    //     })
-    // }
+        if(!req.cookies.token){
+            return res.status(400).json({
+                msg:"You already logged out"
+            });
+        }
+        
+        res.cookie('token', '', {
+            httpOnly: true, // only acceced by the server 
+            maxAge: 1,// expire after 1 msseconde
+            secure:true,
+            sameSite:"none",
+          });
+        return res.status(200).json({
+            msg:"Logged out successfully"
+        })
+    } catch (error) {
+        return res.status(500).json({
+            msg:error.message
+        })
+    }
+   
+}
+
+
+let getALLuser = async  (req,res)=>{
     const user =await  User.find({});
     return res.json({
         user
     })
 }
-
 let getCurrentUser = async (req,res)=>{
     try {
         const user = await User.findById(req.user.userId).select("-password")

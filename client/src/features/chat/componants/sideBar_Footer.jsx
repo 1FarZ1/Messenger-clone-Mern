@@ -1,7 +1,24 @@
 
+import axios from "axios";
 
 
 const SideBarFooter = () => {
+
+    const logOut =  async ()=>{
+        try {
+            const res =  await axios.get("http://127.0.0.1:5500/api/v1/auth/logout",{
+                withCredentials:true,
+                credentials: 'include',
+                headers: {
+                    "Content-Type": "application/json",
+                  },
+            });
+            console.log(res.data);
+           
+        } catch (error) {
+            console.log(error);    
+        }
+    }
     return (
         <div className="footer">
             
@@ -10,7 +27,7 @@ const SideBarFooter = () => {
             </div>
 
             <div className="logout">
-                <button>Logout</button>
+                <button onClick={logOut}>Logout</button>
             </div>
             <div className="settings">
                 <button>Settings</button>
