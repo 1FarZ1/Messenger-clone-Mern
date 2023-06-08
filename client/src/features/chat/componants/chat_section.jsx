@@ -50,9 +50,39 @@ const  ChatSection = () => {
             isMe:false,
     
         },
+        {
+            message:"hello bro",
+            profilePic:"https://avatars.githubusercontent.com/u/91225280?v=4",
+            isMe:false,
+    
+        },
+        {
+            message:"hello bro",
+            profilePic:"https://avatars.githubusercontent.com/u/91225280?v=4",
+            isMe:false,
+    
+        },
+        {
+            message:"hello bro",
+            profilePic:"https://avatars.githubusercontent.com/u/91225280?v=4",
+            isMe:false,
+    
+        },
+        {
+            message:"hello bro",
+            profilePic:"https://avatars.githubusercontent.com/u/91225280?v=4",
+            isMe:true,
+    
+        },
+        {
+            message:"hello bro",
+            profilePic:"https://avatars.githubusercontent.com/u/91225280?v=4",
+            isMe:false,
+    
+        },
     ];
 
-    
+
     return (
         <div className="chat__section">
             <ChatHeader/>

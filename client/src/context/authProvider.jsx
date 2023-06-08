@@ -16,25 +16,19 @@ import axios from 'axios';
 
 
 export const AuthProvider = ({ children }) => {
-    const [user, setUser] = useState(null);
+    const [authState, setauthState] = useState(false);
     useEffect( () => {
-
         axios.get("http://127.0.0.1:5500/api/v1/auth/me",{
             withCredentials:true,
             credentials: 'include',
-            headers: {
-                "Content-Type": "application/json",
-              },
         }).then((v)=>{
-              if(!user){
-                    setUser(v.data.user);
-                }  
+              setauthState(v.data.auth);
         });   
      
-        console.log(user);
- }, [user]);
+        console.log(authState);
+ }, [authState]);
     return (
-      <AuthContext.Provider value={{ user}}>{children}</AuthContext.Provider>
+      <AuthContext.Provider value={{ authState , func:setauthState}}>{children}</AuthContext.Provider>
     );
   };
 

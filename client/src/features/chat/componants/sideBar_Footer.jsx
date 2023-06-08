@@ -1,8 +1,12 @@
 
 import axios from "axios";
+import { useContext } from "react";
+import AuthContext from "../../../context/authContext";
 
 
 const SideBarFooter = () => {
+
+    const {func} = useContext(AuthContext); //  the func is used to change the authState in the authProvider.jsx
 
     const logOut =  async ()=>{
         try {
@@ -13,6 +17,7 @@ const SideBarFooter = () => {
                     "Content-Type": "application/json",
                   },
             });
+            func(false);
             console.log(res.data);
            
         } catch (error) {

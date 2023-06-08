@@ -3,12 +3,11 @@
 
 
 import '../chat.css'
-const Contact = ({username,msg,profilePic,time}) => { 
-    const handleClick = () => {
-        console.log(username);
-    }
+const Contact = ({username,msg,profilePic,time,isSelected}) => { 
+   
+    const classChosed = isSelected ?  "contact contact_selected": "contact"; 
     return (
-        <div className="contact" onClick={handleClick}>
+        <div className={classChosed}>
             <img src={profilePic} alt="profile pic"/>
             <div className="contact__details">
                 <h3>{username}</h3>
