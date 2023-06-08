@@ -5,7 +5,6 @@ import { faInfoCircle } from '@fortawesome/free-solid-svg-icons'
 const ChatHeader = (props) => {
 
     const {name,profilePic} = props;
-    console.log(props);
     return (
         <div className="chat__header">
             <div className="chat__header__left">

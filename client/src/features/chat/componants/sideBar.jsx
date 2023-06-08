@@ -11,9 +11,9 @@ import AuthContext from "../../../context/authContext";
 const SideBar = (props) => {
 
 
-    const {contacts} = useContext(AuthContext)
+    const {contacts,user} = useContext(AuthContext)
     const {currentContact ,setContact} = props;
-
+    console.log(user);
 
     const changeContact = (val) => setContact(val);
     

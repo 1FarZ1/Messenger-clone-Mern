@@ -27,19 +27,33 @@ export const AuthProvider = ({ children }) => {
 
 ];
 
-    const [authState, setauthState] = useState(false);
+    const [user, setUser] = useState(null);
     useEffect( () => {
-        axios.get("http://127.0.0.1:5500/api/v1/auth/me",{
-            withCredentials:true,
-            credentials: 'include',
-        }).then((v)=>{
-              setauthState(v.data.auth);
-        });   
+     const getUser = async ()=>{
+      try {
+        const res = await axios.get("http://127.0.0.1:5500/api/v1/auth/me",{
+          withCredentials:true,
+          credentials: 'include',
+      });
+      if(res.data.auth == false){
+        setUser(null)
+      }
+      else{
+        if(user ===null){
+          setUser(res.data.user)
+        }
+      }
+      } catch (error) {
+        console.log(error);
+      } 
+
+     }  
+     getUser();
+
      
-        console.log(authState);
- }, [authState]);
+ }, [user]);
     return (
-      <AuthContext.Provider value={{ authState , func:setauthState,contacts}}>{children}</AuthContext.Provider>
+      <AuthContext.Provider value={{ user , func:setUser,contacts}}>{children}</AuthContext.Provider>
     );
   };
 

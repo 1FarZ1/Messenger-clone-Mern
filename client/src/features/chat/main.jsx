@@ -12,7 +12,7 @@ const ChatPage = () => {
         
         <div className="chat__container">
         <SideBar currentContact = {currentContact}  setContact ={setContact}/>
-        <ChatSection  currentContact = {currentContact} setContact ={setContact}/>
+        <ChatSection  currentContact = {currentContact}/>
       
         </div>
     )

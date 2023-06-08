@@ -17,7 +17,7 @@ const SideBarFooter = () => {
                     "Content-Type": "application/json",
                   },
             });
-            func(false);
+            func(null);
             console.log(res.data);
            
         } catch (error) {
@@ -34,9 +34,7 @@ const SideBarFooter = () => {
             <div className="logout">
                 <button onClick={logOut}>Logout</button>
             </div>
-            <div className="settings">
-                <button>Settings</button>
-            </div>
+         
             
             </div>
     );

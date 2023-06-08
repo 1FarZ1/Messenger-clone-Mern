@@ -7,6 +7,8 @@ const User = require("../models/user");
 const getMessages = async (req, res) => {
     try {
         const { convId } = req.params;
+
+        console.log("called");
         if (!convId) return res.status(400).json({ msg: "conversation id is required" });
         const messages = await Message.find({
             conversationId: convId
@@ -17,7 +19,7 @@ const getMessages = async (req, res) => {
         messages.forEach((elm) => {
             let user = User.findById(elm.sender).select("username profilePicture");
             result.push({
-                user, msg: elm.text, time: elm.createdAt, fromYou: user._id == userId
+                user, msg: elm.text, time: elm.createdAt, isMe: user._id == userId
             });
         });
 
