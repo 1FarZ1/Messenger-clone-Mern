@@ -1,5 +1,5 @@
 # messenger-clone (adding real chatting using socket still in progess)
-## A Full Stack and Functionnel Messenger Clone built using Nodejs, Express,MongoDb ,React,Socket io and other npm Packages listed below,  for learning purposes and focusing on the functionality mostly , 
+## A Full Stack and Functionnel Messenger Clone built using Nodejs, Express,MongoDb ,React,Socket io and other npm Packages listed below,  for learning purposes and focusing on the functionality mostly, following the most possible best practises
 
 
 ## Screenshots
