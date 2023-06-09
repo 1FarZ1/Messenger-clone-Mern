@@ -4,8 +4,10 @@ import App from './index.jsx'
 import { AuthProvider } from './context/authProvider'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-    <AuthProvider>
+<AuthProvider>
        <App/>
 
     </AuthProvider>
+
+
 )

@@ -6,9 +6,11 @@ import axios from 'axios';
 export const AuthProvider = ({ children }) => {
     const [contacts ,setContacts] = useState(undefined)
     const [user, setUser] = useState(undefined);
+    const [loading,setLoading ] = useState(false);
     useEffect( () => {
      const getUser = async ()=>{
       try {
+        setLoading(true);
         const res = await axios.get("http://127.0.0.1:5500/api/v1/auth/me",{
           withCredentials:true,
           credentials: 'include',
@@ -44,9 +46,13 @@ export const AuthProvider = ({ children }) => {
                     
                   }));
           setUser(res.data.user)
+         
           
         }
       }
+
+      setLoading(false);
+
       } catch (error) {
         console.log(error);
       } 
@@ -57,15 +63,14 @@ export const AuthProvider = ({ children }) => {
      
  }, []);
 
-
- if (user === undefined) {
+ console.log(loading);
+ if (loading  && !user) {
   return null;
 }
-  if(contacts === undefined){
-      return null;
-      }
-
-    console.log(contacts);
+ 
+if(loading && !contacts){
+  return null;
+}
     return (
       <AuthContext.Provider value={{ user , func:setUser,contacts}}>{children}</AuthContext.Provider>
     );

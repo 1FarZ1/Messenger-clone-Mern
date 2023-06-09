@@ -77,6 +77,19 @@ let main = async ()=>{
     
 }
 
+io.on("connection", (socket) => {
+   socket.on("MessageSent", (msg, convId) => {
+       socket.to(convId).emit("Receive-msg",msg)
+   })
+   socket.on("join-Conv", (convId) => {
+       socket.join(convId);
+   })
+   socket.on("leave-conv", (convId) => {
+       socket.leave(convId);
+   })
+})
+
+
 main();
 
 
