@@ -12,7 +12,7 @@ import AuthContext from "../../../context/authContext";
 
 
 const  ChatSection = (props) => {
-    const {user,} = useContext(AuthContext);
+    const {user} = useContext(AuthContext);
     const {contact,currentContact} = props;
     const  [data,setData]= useState([]);
 

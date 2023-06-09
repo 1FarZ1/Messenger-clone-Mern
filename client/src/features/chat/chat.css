@@ -188,12 +188,16 @@ body{
     justify-content: flex-start;
     padding: 10px;
     width: 100%;
+    height: 100%;
     gap: 20px;
     cursor: pointer;
+    border-radius: 18px;
+
 }
 
-.side__bar .contact_selected{
- 
+.side__bar .contact_selected
+{ 
+
     background-color: rgb(54, 58, 67);
 }
 .side__bar .contact .contact__details{
@@ -220,13 +224,12 @@ body{
 
 }
 .contact__button {
-    display: flex;
-    border-radius: 8px;
+    border-radius: 18px;
     border: 1px solid transparent;
     width: calc(100% - 40px);
     margin-right: 20px;
     margin-left: 20px;
-    margin-top: 10px;
+    margin-top: 14px;
     height: 20%;
     padding: 0em 0em;
     font-size: 1em;
