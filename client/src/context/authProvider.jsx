@@ -4,7 +4,7 @@ import AuthContext from './authContext'
 import axios from 'axios';
 
 export const AuthProvider = ({ children }) => {
-    const [contacts ,setContacts] = useState([])
+    const [contacts ,setContacts] = useState(undefined)
     const [user, setUser] = useState(undefined);
     useEffect( () => {
      const getUser = async ()=>{
@@ -21,13 +21,12 @@ export const AuthProvider = ({ children }) => {
             Promise.all(
                 res.data.user.Contacts.map(async (e)=>{
                     const res = await axios.get("http://127.0.0.1:5500/api/v1/auth/user/"+e);
-                    console.log(contacts)
-                    if(contacts === []){
-                        setContacts([res.data.user])
-                        return;
-                    }
-                    contacts.push(res.data.user);
-                    setContacts(contacts);
+                    setContacts(prevContacts => {
+                      if (!prevContacts) {
+                        return [res.data.user];
+                      }
+                      return [...prevContacts, res.data.user];
+                    });
                   }));
           setUser(res.data.user)
           
@@ -42,12 +41,13 @@ export const AuthProvider = ({ children }) => {
      
      
  }, []);
+
+
  if (user === undefined) {
   return null;
 }
-  if(contacts === []){
+  if(contacts === undefined){
       return null;
-
       }
     return (
       <AuthContext.Provider value={{ user , func:setUser,contacts}}>{children}</AuthContext.Provider>

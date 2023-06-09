@@ -15,11 +15,12 @@ const  ChatSection = (props) => {
     const {contacts} = useContext(AuthContext);
     const {currentContact} = props;
     const  [data,setData]= useState([]);
+    console.log(contacts);
 
     useEffect(()=>{
         const getMessages = async () => {
           try {
-            const res = await axios.get("http://127.0.0.1:5500/api/v1/messages/" + contacts[currentContact].username);
+            const res = await axios.get("http://127.0.0.1:5500/api/v1/messages/" + contacts[currentContact]._id);
             console.log(res);
             setData(res.data);
           } catch (err) {
@@ -29,11 +30,10 @@ const  ChatSection = (props) => {
         getMessages(); 
     },[currentContact])
 
-    console.log(contacts);
 
     return (
         <div className="chat__section">
-            <ChatHeader name={contacts ===undefined ?  "temp" :contacts[currentContact].username} profilePic={ contacts ===undefined ?"" :contacts[currentContact].profilePic}/>
+            <ChatHeader name={contacts[currentContact].username} profilePic={contacts[currentContact].profilePic}/>
             <Conversation  data= {data} contact={contacts[currentContact]}/>
             <ChatInput/>
     

@@ -50,6 +50,7 @@ let login = async (req,res)=>{
     }
     let tkUser = createTokenUser(user);
     attachCookiesToResponse({res,user:tkUser});
+    console.log("before smoothly")
     console.log(req.cookies);
     console.log("it went smothly");
     return res.status(200).send({

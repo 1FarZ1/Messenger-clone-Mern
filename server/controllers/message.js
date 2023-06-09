@@ -8,7 +8,7 @@ const getMessages = async (req, res) => {
     try {
         const { convId } = req.params;
 
-        console.log("called");
+        console.log(convId);
         if (!convId) return res.status(400).json({ msg: "conversation id is required" });
         const messages = await Message.find({
             conversationId: convId
@@ -27,6 +27,7 @@ const getMessages = async (req, res) => {
             result,
         })
     } catch (error) {
+        console.log(error);
         return res.status(500).json({
             msg: error.message
         });

@@ -5,7 +5,7 @@ let authMiddleWare = (req,res,next)=>{
     // check from cookies
     try{
 
-      console.log(req.cookies);
+        console.log(req.cookies);
         
         let token;
         const authHeader = req.headers.authorization;
