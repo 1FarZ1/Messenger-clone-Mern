@@ -27,7 +27,7 @@ export const AuthProvider = ({ children }) => {
 
 ];
 
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useState(undefined);
     useEffect( () => {
      const getUser = async ()=>{
       try {
@@ -39,11 +39,12 @@ export const AuthProvider = ({ children }) => {
         setUser(null)
       }
       else{
-        if(user ===null){
+        if(user ===undefined){
           setUser(res.data.user)
         }
       }
       } catch (error) {
+        console.log("provider")
         console.log(error);
       } 
 
@@ -51,7 +52,10 @@ export const AuthProvider = ({ children }) => {
      getUser();
 
      
- }, [user]);
+ }, []);
+ if (user === undefined) {
+  return null;
+}
     return (
       <AuthContext.Provider value={{ user , func:setUser,contacts}}>{children}</AuthContext.Provider>
     );

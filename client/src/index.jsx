@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-// import AuthPage from './features/auth/main'
+import AuthPage from './features/auth/main'
 import ChatPage from "./features/chat/main";
-// import { PrivateRoute } from "./private/privateRouter";
+import { PrivateRoute } from "./private/privateRouter";
 
 
 const App = () => {
@@ -9,8 +9,12 @@ const App = () => {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<ChatPage />}/>
+                <Route element={<PrivateRoute />}>
+                    <Route path="/" element={<ChatPage />} />
+                </Route>
+                <Route path="/login" element={<AuthPage />} />
             </Routes>
+
         </BrowserRouter>
     )
 }
@@ -18,9 +22,9 @@ const App = () => {
 export default App
 
 
-// <Routes>   
-// <Route element={<PrivateRoute />}>
-//             <Route path="/" element={<ChatPage />} />
-//   </Route>             
-//     <Route path="/login" element={<AuthPage />} />
-// </Routes>
+
+
+
+// <Routes>
+//                 <Route path="/" element={<ChatPage />}/>
+//             </Routes>

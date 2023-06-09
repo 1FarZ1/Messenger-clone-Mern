@@ -19,7 +19,7 @@ const  ChatSection = (props) => {
     useEffect(()=>{
         const getMessages = async () => {
           try {
-            const res = await axios.get("http://127.0.0.1:5500 /api/v1/messages/" + contacts[currentContact].username);
+            const res = await axios.get("http://127.0.0.1:5500/api/v1/messages/" + contacts[currentContact].username);
             console.log(res);
             setData(res.data);
           } catch (err) {
@@ -27,7 +27,6 @@ const  ChatSection = (props) => {
           }
         };
         getMessages(); 
-        console.log("running");
     },[currentContact])
 
     return (

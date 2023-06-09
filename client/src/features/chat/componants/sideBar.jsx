@@ -11,15 +11,14 @@ import AuthContext from "../../../context/authContext";
 const SideBar = (props) => {
 
 
-    const {contacts,user} = useContext(AuthContext)
+    const {contacts} = useContext(AuthContext)
     const {currentContact ,setContact} = props;
-    console.log(user);
-
     const changeContact = (val) => setContact(val);
     
+
     return (
         <div className="side__bar">
-            <SideBarHeader />
+            <SideBarHeader  />
 
             <div className="test">
             {
