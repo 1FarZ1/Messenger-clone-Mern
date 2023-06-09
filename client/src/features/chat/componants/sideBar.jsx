@@ -4,15 +4,11 @@
 import Contact from "./contact";
 import SideBarHeader from "./sideBar_header";
 import SideBarFooter from "./sideBar_Footer.jsx";
-import { useContext } from "react";
-import AuthContext from "../../../context/authContext";
 
 
 const SideBar = (props) => {
 
-
-    const {contacts} = useContext(AuthContext)
-    const {currentContact ,setContact} = props;
+    const {contacts,currentContact ,setContact} = props;
     const changeContact = (val) => setContact(val);
     
 
@@ -32,7 +28,7 @@ const SideBar = (props) => {
                         return <button className="contact__button" key={contacts.indexOf(e)}  onClick={()=>{
                             return changeContact(contacts.indexOf(e));
                         }}>
-                            <Contact username={e.username} msg={e.msg} profilePic={e.profilePic} time={e.time}  isSelected={contacts.indexOf(e) === currentContact} key={contacts.indexOf(e)}    />
+                            <Contact username={e.username} msg="hello bro" profilePic={e.profilePicture} time="time" isSelected={contacts.indexOf(e) === currentContact} key={contacts.indexOf(e)}    />
                         </button>
                     
 

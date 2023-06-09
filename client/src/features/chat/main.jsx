@@ -1,18 +1,20 @@
 
 import ChatSection from "./componants/chat_section";
 import SideBar from "./componants/sideBar";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import "./chat.css"
+import AuthContext from "../../context/authContext";
 
 
 const ChatPage = () => { 
+    const {contacts} =  useContext(AuthContext);
     const [currentContact,setContact] = useState(0);
     return (
 
         
         <div className="chat__container">
-        <SideBar currentContact = {currentContact}  setContact ={setContact}/>
-        <ChatSection  currentContact = {currentContact}/>
+        <SideBar contacts={contacts} currentContact = {currentContact}  setContact ={setContact}/>
+        <ChatSection  contact = {contacts[currentContact]}/>
       
         </div>
     )

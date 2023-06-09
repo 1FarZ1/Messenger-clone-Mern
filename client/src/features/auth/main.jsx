@@ -10,20 +10,22 @@ import AuthContext from '../../context/authContext.jsx';
 
 
 const AuthPage = () => {
+    const{user}=useContext(AuthContext);
+    const navigate = useNavigate();
+    if(user){
+        navigate("/");
+    }
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [username, setUsername] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const [haveAccount, sethaveAccount] = useState(true);
-    const {func} =  useContext(AuthContext);
-    const navigate = useNavigate();
-
-
     const resetCredentials = ()=>{
         email && setEmail('');
         password && setPassword('');
         username && setUsername('');
     }
+
    
     const signIn = async (email,password) => {
         console.log("logging in as  " + email + " with password " + password)
