@@ -1,6 +1,12 @@
 # messenger-clone (still in progress)
 ## A Full Stack and Functionnel Messenger Clone built using Nodejs, Express,MongoDb ,React,Socket io and other npm Packages listed below,  for learning purposes and focusing on the functionality mostly , 
 
+
+## Screenshots
+![image](https://github.com/1FarZ1/Messenger-clone-Mern/assets/91225280/30b09c79-0c85-40d1-a497-6ab4859ee3d6)
+![image](https://github.com/1FarZ1/Messenger-clone-Mern/assets/91225280/7b382097-8da7-4f6f-9026-54f3b35e1a94)
+![image](https://github.com/1FarZ1/Messenger-clone-Mern/assets/91225280/860efde4-57a5-4987-b402-d17a92f9e763)
+
 ## Setup
 - git clone https://github.com/1Farz1/messenger-clone-mern.git
 - cd messenger-clone-mern
