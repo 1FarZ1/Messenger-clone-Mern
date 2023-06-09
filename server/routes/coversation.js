@@ -4,8 +4,8 @@ const{createNewConversation,getConversationsForUser,getConversation } = require(
 
 
 router.route("/").post(createNewConversation);
-router.route("/:userId").get(getConversationsForUser)
-router.route("/:conversationId").get(getConversation)
+// router.route("/:userId").get(getConversationsForUser) // i think useless , i think
+router.route("/:convId").get(getConversation)
 
 
 module.exports = router;

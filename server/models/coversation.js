@@ -4,9 +4,9 @@ const mongoose = require("mongoose");
 const ConversationSchema = new mongoose.Schema({
     memebers:{
         type:[mongoose.Schema.Types.ObjectId],
-        required:[true, "please provide at least 1 user"],
+        required:[true, "please provide at least 2 user"],
         ref:"User",
-        min:1,
+        min:2,
     }
 },  { timestamps: true })
 

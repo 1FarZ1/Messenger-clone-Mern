@@ -54,6 +54,7 @@ const getConversationsForUser = async (req,res)=>{
 const getConversation = async (req,res)=>{
     try {
         const {convId} = req.params;
+        console.log(convId);
         const conv = await Conversation.findById(convId).select("memebers");
         return res.status(200).json({
             conv
