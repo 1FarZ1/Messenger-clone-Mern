@@ -1,5 +1,6 @@
 const Conversation = require('../models/coversation');
 const User = require("../models/user");
+const Message  = require("../models/message")
 
 
 
@@ -39,6 +40,8 @@ const getConversationsForUser = async (req,res)=>{
     try {
         const {userId} = req.params;
         const user = await User.findById(userId).populate("conversations");
+       
+
         return res.status(200).json({
             conversations:user.conversations,
             length:user.conversations.length,
@@ -55,10 +58,15 @@ const getConversation = async (req,res)=>{
     try {
         const {convId} = req.params;
         const conv = await Conversation.findById(convId).select("memebers");
+        const lastMessage  =await Message.findOne({
+            conversationId: convId
+    }).select("text");
         return res.status(200).json({
-            conv
+            conv,
+            lastMessage
         });
     } catch (error) {
+        console.log(error);
         return res.status(500).json({
             error:error.message
         });

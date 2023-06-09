@@ -14,7 +14,7 @@ const ChatPage = () => {
         
         <div className="chat__container">
         <SideBar  contacts={contacts} currentContact = {currentContact}  setContact ={setContact}/>
-        <ChatSection   contact = {contacts[currentContact]} currentContact = {currentContact} />
+        <ChatSection   contact = {contacts[currentContact].contact} currentContact = {currentContact} />
       
         </div>
     )

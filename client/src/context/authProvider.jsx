@@ -21,7 +21,6 @@ export const AuthProvider = ({ children }) => {
             Promise.all(
                 res.data.user.Contacts.map(async (e)=>{
                     const Convres = await axios.get("http://127.0.0.1:5500/api/v1/conversations/"+e);
-
                     let memebers = Convres.data.conv.memebers;
                     memebers = memebers.filter((e)=>{
                         return e !== res.data.user._id;
@@ -31,9 +30,15 @@ export const AuthProvider = ({ children }) => {
                         const userRes = await axios.get("http://127.0.0.1:5500/api/v1/auth/user/"+ e);
                               setContacts(prevContacts => {
                                    if (!prevContacts) {
-                                      return [userRes.data.user];
+                                      return [{
+                                        contact:userRes.data.user,
+                                        lastMessage:Convres.data.lastMessage
+                                      }];
                                   }
-                                  return [...prevContacts, userRes.data.user];
+                                  return [...prevContacts, {
+                                    contact:userRes.data.user,
+                                    lastMessage:Convres.data.lastMessage
+                                  }];
                         });
                     });
                     
@@ -59,6 +64,8 @@ export const AuthProvider = ({ children }) => {
   if(contacts === undefined){
       return null;
       }
+
+    console.log(contacts);
     return (
       <AuthContext.Provider value={{ user , func:setUser,contacts}}>{children}</AuthContext.Provider>
     );

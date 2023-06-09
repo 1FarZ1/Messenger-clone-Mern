@@ -12,7 +12,7 @@ const getMessages = async (req, res) => {
         if (!convId) return res.status(400).json({ msg: "conversation id is required" });
         const messages = await Message.find({
             conversationId: convId
-        }).sort({ createdAt: -1 }).select("-conversationId");
+        }).select("-conversationId");
         let userId = "647aca2aa86d8588441da464";
         let result = [];
         result = await Promise.all(

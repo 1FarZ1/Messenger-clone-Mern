@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import ChatHeader from "./chat_header";
 import ChatInput from "./chat_input";

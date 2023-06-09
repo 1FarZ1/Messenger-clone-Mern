@@ -9,9 +9,9 @@ import SideBarFooter from "./sideBar_Footer.jsx";
 const SideBar = (props) => {
 
     const {contacts,currentContact ,setContact} = props;
+
     const changeContact = (val) => setContact(val);
     
-
     return (
         <div className="side__bar">
             <SideBarHeader  />
@@ -28,7 +28,7 @@ const SideBar = (props) => {
                         return <button className="contact__button" key={contacts.indexOf(e)}  onClick={()=>{
                             return changeContact(contacts.indexOf(e));
                         }}>
-                            <Contact username={e.username} msg="later fix it" profilePic={e.profilePicture} time="time" isSelected={contacts.indexOf(e) === currentContact} key={contacts.indexOf(e)}    />
+                            <Contact username={e.contact.username} msg={e.lastMessage.text} profilePic={e.contact.profilePicture} time="time" isSelected={contacts.indexOf(e) === currentContact} key={contacts.indexOf(e)}    />
                         </button>
                     
 
