@@ -28,7 +28,7 @@ const SideBar = (props) => {
                         return <button className="contact__button" key={contacts.indexOf(e)}  onClick={()=>{
                             return changeContact(contacts.indexOf(e));
                         }}>
-                            <Contact username={e.username} msg="hello bro" profilePic={e.profilePicture} time="time" isSelected={contacts.indexOf(e) === currentContact} key={contacts.indexOf(e)}    />
+                            <Contact username={e.username} msg="later fix it" profilePic={e.profilePicture} time="time" isSelected={contacts.indexOf(e) === currentContact} key={contacts.indexOf(e)}    />
                         </button>
                     
 

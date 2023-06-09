@@ -2,21 +2,23 @@
 import ChatHeader from "./chat_header";
 import ChatInput from "./chat_input";
 import Conversation from "./conversation";
-import { useEffect,useState } from 'react';
+import { useContext, useEffect,useState } from 'react';
 import axios from "axios"
+import AuthContext from "../../../context/authContext";
 
 
 
 
 
 const  ChatSection = (props) => {
-    const {contact} = props;
+    const {user,} = useContext(AuthContext);
+    const {contact,currentContact} = props;
     const  [data,setData]= useState([]);
 
     useEffect(()=>{
         const getMessages = async () => {
           try {
-            const res = await axios.get("http://127.0.0.1:5500/api/v1/messages/" + contact._id);
+            const res = await axios.get("http://127.0.0.1:5500/api/v1/messages/" + user.Contacts[currentContact]  );
             console.log(res);
             setData(res.data);
           } catch (err) {
@@ -24,12 +26,12 @@ const  ChatSection = (props) => {
           }
         };
         getMessages(); 
-    },[])
+    },[currentContact])
 
     return (
         <div className="chat__section">
             <ChatHeader name={contact.username} profilePic={contact.profilePicture}/>
-            <Conversation  data= {data} contact={contact}/>
+            <Conversation  data= {data.result} contact={contact}/>
             <ChatInput/>
     
         </div>

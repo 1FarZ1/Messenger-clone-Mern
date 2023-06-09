@@ -6,11 +6,16 @@ import Message from './message'
 
 export default function Conversation(props) {
     const {data} = props;
+    console.log(data);
       return (
     <div className="message__Section">
     
-        <h1>no messages</h1>
-
+    {
+        data ===  undefined ? <h1>no messages yet</h1> : data.map((e)=>{
+            return <Message profilePic={e.user.profilePicture} message={e.msg}  isMe={e.isMe} key={data.indexOf(e)} />
+        }
+        )
+    }
     
 
  </div>

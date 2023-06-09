@@ -8,20 +8,21 @@ const getMessages = async (req, res) => {
     try {
         const { convId } = req.params;
 
+
         if (!convId) return res.status(400).json({ msg: "conversation id is required" });
         const messages = await Message.find({
             conversationId: convId
         }).sort({ createdAt: -1 }).select("-conversationId");
-
         let userId = "647aca2aa86d8588441da464";
         let result = [];
-        messages.forEach((elm) => {
-            let user = User.findById(elm.sender).select("username profilePicture");
-            result.push({
+        result = await Promise.all(
+        messages.map( async (elm) => {
+            let user = await User.findById(elm.sender).select("username profilePicture");
+            return {
                 user, msg: elm.text, time: elm.createdAt, isMe: user._id == userId
-            });
-        });
-
+            };
+        })
+       );
         return res.status(200).json({
             result,
         })
@@ -38,6 +39,7 @@ const getMessages = async (req, res) => {
 const addMessage = async (req, res) => {
     const { convId } = req.params;
     const { text } = req.body;
+    
     if(!convId) return res.status(400).json({ msg: "conversation id is required" });
     try {
         const conversation = await Conversation.findById(convId);
