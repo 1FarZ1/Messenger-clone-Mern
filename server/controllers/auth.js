@@ -86,15 +86,20 @@ let logout = async (req,res)=>{
 }
 
 
-let getALLuser = async  (req,res)=>{
-    const user =await  User.find({});
+let getOneUser = async  (req,res)=>{
+   try{
+    const user =await  User.findById(req.params.id).select("-password");
     return res.json({
         user
     })
+   }
+   catch(e){
+    console.log(e.message);
+   }
 }
 let getCurrentUser = async (req,res)=>{
     try {
-        const user = await User.findById(req.user.userId).select("-password")
+        const user = await User.findById(req.user.userId).select("-password");
         return res.status(200).json({
             user,
             auth:true,
@@ -115,5 +120,6 @@ module.exports=
     register,
     login,
     logout,
-    getCurrentUser
+    getCurrentUser,
+    getOneUser
 }

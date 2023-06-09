@@ -29,9 +29,11 @@ const  ChatSection = (props) => {
         getMessages(); 
     },[currentContact])
 
+    console.log(contacts);
+
     return (
         <div className="chat__section">
-            <ChatHeader name={contacts[currentContact].username} profilePic={contacts[currentContact].profilePic}/>
+            <ChatHeader name={contacts ===undefined ?  "temp" :contacts[currentContact].username} profilePic={ contacts ===undefined ?"" :contacts[currentContact].profilePic}/>
             <Conversation  data= {data} contact={contacts[currentContact]}/>
             <ChatInput/>
     

@@ -22,7 +22,6 @@ const SideBarFooter = () => {
         }
     }
     
-    console.log(user.profilePicture);
     return (
         <div className="footer">
             

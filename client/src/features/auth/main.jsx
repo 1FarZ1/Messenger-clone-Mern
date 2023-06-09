@@ -1,11 +1,12 @@
 /* eslint-disable no-unused-vars */
 
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import MessengerLogo from '../../common/messenger_logo.jsx'
 import { useNavigate  } from "react-router-dom";
 
 import axios from 'axios';
 import './auth.css';
+import AuthContext from '../../context/authContext.jsx';
 
 
 const AuthPage = () => {
@@ -14,6 +15,7 @@ const AuthPage = () => {
     const [username, setUsername] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const [haveAccount, sethaveAccount] = useState(true);
+    const {func} =  useContext(AuthContext);
     const navigate = useNavigate();
 
 
@@ -31,9 +33,6 @@ const AuthPage = () => {
             "email":email,
             "password":password
         },{
-         headers: {
-          "Content-Type": "application/json",
-        },
         withCredentials:true,
         credentials: 'include',
 
@@ -43,7 +42,7 @@ const AuthPage = () => {
         resetCredentials();
         if(res.status == 200){
             setTimeout(()=>{
-                navigate("/",{state:{username:res.data.user.name}});
+                navigate("/");
             },2000);
         }
 
