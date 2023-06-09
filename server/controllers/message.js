@@ -47,7 +47,7 @@ const addMessage = async (req, res) => {
 
         const message = await Message.create({
             conversationId: convId,
-            sender: req.user.userId,
+            sender: "647aca2aa86d8588441da464",
             text
         });
 

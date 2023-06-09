@@ -32,7 +32,7 @@ const  ChatSection = (props) => {
         <div className="chat__section">
             <ChatHeader name={contact.username} profilePic={contact.profilePicture}/>
             <Conversation  data= {data.result} contact={contact}/>
-            <ChatInput/>
+            <ChatInput convId={user.Contacts[currentContact]} />
     
         </div>
     );
