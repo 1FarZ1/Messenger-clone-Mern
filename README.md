@@ -3,9 +3,10 @@
 
 
 ## Screenshots
-![image](https://github.com/1FarZ1/Messenger-clone-Mern/assets/91225280/30b09c79-0c85-40d1-a497-6ab4859ee3d6)
-![image](https://github.com/1FarZ1/Messenger-clone-Mern/assets/91225280/7b382097-8da7-4f6f-9026-54f3b35e1a94)
-![image](https://github.com/1FarZ1/Messenger-clone-Mern/assets/91225280/860efde4-57a5-4987-b402-d17a92f9e763)
+![image](https://github.com/1FarZ1/Messenger-clone-Mern/assets/91225280/99cfb332-3eec-44aa-8e68-2771606e7ac5)
+![image](https://github.com/1FarZ1/Messenger-clone-Mern/assets/91225280/15976d3c-8d0c-4bb6-b253-fadd44e9c97a)
+![image](https://github.com/1FarZ1/Messenger-clone-Mern/assets/91225280/cecbef3f-7d02-4cf1-b9ba-4f392dacf033)
+
 
 ## Setup
 - git clone https://github.com/1Farz1/messenger-clone-mern.git
