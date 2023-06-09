@@ -31,7 +31,7 @@ const ChatInput = (props) => {
         <div className="chat__input">
                 <input type="text"  value={message} onChange={(e)=>{
                     setMessage(e.target.value);
-                }} placeholder="type a message"/>
+                }} placeholder="Aa"/>
                 <button onClick={handleClick}>send</button>
 
             </div>

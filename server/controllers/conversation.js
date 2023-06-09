@@ -60,7 +60,7 @@ const getConversation = async (req,res)=>{
         const conv = await Conversation.findById(convId).select("memebers");
         const lastMessage  =await Message.findOne({
             conversationId: convId
-    }).select("text");
+    }).populate("text");
         return res.status(200).json({
             conv,
             lastMessage

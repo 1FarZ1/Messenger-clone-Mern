@@ -25,10 +25,11 @@ const SideBar = (props) => {
                     </div>
                 :
                 contacts.map((e)=>{
+                    console.log(e);
                         return <button className="contact__button" key={contacts.indexOf(e)}  onClick={()=>{
                             return changeContact(contacts.indexOf(e));
                         }}>
-                            <Contact username={e.contact.username} msg={e.lastMessage.text} profilePic={e.contact.profilePicture} time="time" isSelected={contacts.indexOf(e) === currentContact} key={contacts.indexOf(e)}    />
+                            <Contact username={e.contact.username} msg={e.lastMessage.text} profilePic={e.contact.profilePicture} time={e.lastMessage.createdAt === undefined ? "no time yet ": e.lastMessage.createdAt .split("T")[0]} isSelected={contacts.indexOf(e) === currentContact} key={contacts.indexOf(e)}    />
                         </button>
                     
 
