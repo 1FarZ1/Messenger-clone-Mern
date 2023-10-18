@@ -13,7 +13,7 @@ const getMessages = async (req, res) => {
         const messages = await Message.find({
             conversationId: convId
         }).select("-conversationId");
-        let userId = "647aca2aa86d8588441da464";
+        let userId = req.user.userId;
         let result = [];
         result = await Promise.all(
         messages.map( async (elm) => {
